@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "baseHref": "/blog-jaime/",
             "outputPath": "dist/blog-admin",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -97,5 +98,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "3ad9a1c6-3460-4fd7-8b4c-c7f672ec6eb0"
   }
 }
