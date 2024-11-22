@@ -12,7 +12,7 @@ export class GitHubService {
   constructor(private http: HttpClient) {}
 
   createPost(title: string, content: string): Observable<any> {
-    const path = `_posts/${this.formatDate()}-${this.slugify(title)}.md`;
+    const path = `posts/${this.formatDate()}-${this.slugify(title)}.md`;
     const headers = this.getHeaders();
 
     const body = {
