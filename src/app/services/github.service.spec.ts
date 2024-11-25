@@ -1,13 +1,21 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { GitHubService } from './github.service';
 
-import { GithubService } from './github.service';
-
-describe('GithubService', () => {
-  let service: GithubService;
+describe('GitHubService', () => {
+  let service: GitHubService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(GithubService);
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [
+        {
+          provide: 'GITHUB_TOKEN',
+          useValue: 'test-token'
+        }
+      ]
+    });
+    service = TestBed.inject(GitHubService);
   });
 
   it('should be created', () => {

@@ -3,11 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MarkdownModule } from 'ngx-markdown';
 import { GitHubService } from '../../services/github.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-post-editor',
   standalone: true,
-  imports: [FormsModule, HttpClientModule, MarkdownModule],
+  imports: [FormsModule, HttpClientModule, MarkdownModule, CommonModule],
   template: `
     <div class="container">
       <h2>Editor de Posts</h2>

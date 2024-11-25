@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -8,8 +8,14 @@ import { environment } from '../../environments/environment';
 })
 export class GitHubService {
   private baseUrl = 'https://api.github.com';
+  private githubToken: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    @Inject('GITHUB_TOKEN') githubToken: string
+  ) {
+    this.githubToken = githubToken;
+  }
 
   createPost(title: string, content: string): Observable<any> {
     const path = `posts/${this.formatDate()}-${this.slugify(title)}.md`;
@@ -59,7 +65,7 @@ export class GitHubService {
 
   private getHeaders(): HttpHeaders {
     return new HttpHeaders({
-      'Authorization': `token ${environment.githubToken}`,
+      'Authorization': `token ${this.githubToken}`,
       'Content-Type': 'application/json'
     });
   }
