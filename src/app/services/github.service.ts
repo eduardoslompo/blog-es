@@ -15,6 +15,8 @@ export class GitHubService {
     @Inject('GITHUB_TOKEN') githubToken: string
   ) {
     this.githubToken = githubToken;
+    console.log('GitHub token:', this.githubToken);
+    console.log('Tipo do token:', typeof this.githubToken);
   }
 
   createPost(title: string, content: string): Observable<any> {
@@ -64,10 +66,12 @@ export class GitHubService {
   }
 
   private getHeaders(): HttpHeaders {
-    return new HttpHeaders({
+    const headers = new HttpHeaders({
       'Authorization': `token ${this.githubToken}`,
       'Content-Type': 'application/json'
     });
+    console.log('Headers:', headers);
+    return headers;
   }
 
   private formatDate(): string {
