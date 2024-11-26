@@ -4,6 +4,8 @@
 .env
 .env.local
 .env.*.local
+src/.env
+src/environments/environment.ts
 
 # Compiled output
 /dist
